@@ -1,0 +1,7 @@
+Bootstrap: docker
+From: fedora:36
+
+%post
+#  echo "Running custom stuff"
+#  yum -y install gcc-c++
+

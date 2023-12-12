@@ -1,0 +1,34 @@
+Bootstrap: docker
+From: almalinux/9-base
+
+%post 
+    yum install -y gcc gcc-gfortran cmake maven
+    yum install -y environment-modules
+    yum install -y tzdata
+    yum install -y vim-enhanced
+    yum install -y java-17-openjdk
+# RCDB ####################################
+    yum install -y python3-sqlalchemy
+    yum install -y python3-PyMySQL
+    yum install -y python3-ply
+    yum install -y python3-mako
+    yum install -y python3-jinja2
+    yum install -y python3-markupsafe
+# #########################################
+    yum install -y python3-tkinter
+# #########################################
+    yum install -y python3-requests
+    yum install -y python3-six
+    yum install -y python3-pytz
+    yum install -y python3-dateutil
+    yum install -y python3-pip
+# #########################################
+    pip3 install --prefix /opt pandas numpy matplotlib
+
+%files
+    /home/baltzell/rcdb /opt/
+
+%environment
+    PYTHONPATH=/opt/rcdb:/opt/lib64/python3.9/site-packages:/opt/lib/python3.9/site-packages
+    export PYTHONPATH
+

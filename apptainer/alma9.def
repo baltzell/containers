@@ -10,6 +10,9 @@ From: almalinux/9-base
 
 %post
     cd /usr/share/pki/ca-trust-source/anchors && curl -sLO https://pki.jlab.org/JLabCA.crt && update-ca-trust
+    dnf install -y 'dnf-command(config-manager)'
+    dnf install -y almalinux-release-devel
+    dnf config-manager --set-enabled crb
     yum install -y gcc gcc-gfortran cmake maven
     yum install -y environment-modules
     yum install -y tzdata

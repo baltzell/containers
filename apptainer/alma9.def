@@ -47,6 +47,7 @@ From: almalinux/9-base
     pip3 install --prefix /opt pandas numpy matplotlib
 
 %environment
+    PS1='alma9> '
     PATH=${PATH}:/opt/bin
     PYTHONPATH=${PYTHONPATH}:/opt/lib64/python3.9/site-packages
     PYTHONPATH=${PYTHONPATH}:/opt/lib/python3.9/site-packages
@@ -54,5 +55,5 @@ From: almalinux/9-base
     CCDB_CONNECTION=mysql://clas12reader@clasdb.jlab.org/clas12
     RCDB_CONNECTION=mysql://rcdb@clasdb.jlab.org/rcdb
     RCDB_HOME=/opt/rcdb
-    export PATH PYTHONPATH CCDB_CONNECTION RCDB_CONNECTION RCDB_HOME
+    export PS1 PATH PYTHONPATH CCDB_CONNECTION RCDB_CONNECTION RCDB_HOME
 

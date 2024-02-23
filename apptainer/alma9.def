@@ -1,5 +1,6 @@
 Bootstrap: docker
-From: almalinux/9-base
+From: rootproject/root:6.30.02-alma9
+#From: almalinux/9-base
 
 %files
     # Install the python parts of RCDB/CCDB:
@@ -7,6 +8,10 @@ From: almalinux/9-base
     /home/baltzell/ccdb/python /opt/ccdb
     /home/baltzell/rcdb/bin/rcdb /opt/bin/
     /home/baltzell/ccdb/bin/ccdb /opt/bin/
+    /home/baltzell/c12ut-python3/bin/ccdb-ranges.py /opt/bin
+    /home/baltzell/c12ut-python3/bin/ccdb-diff.py /opt/bin
+    /home/baltzell/c12ut-python3/bin/rcdb-spreadsheet.py /opt/bin
+    /home/baltzell/c12ut-python3/mya/fcup-calib.py /opt/bin
 
 %post
     # JLab certificate: ###############################
@@ -15,19 +20,22 @@ From: almalinux/9-base
         && curl -sLO https://pki.jlab.org/JLabCA.crt \
         && update-ca-trust
 
+    dnf update -y
+    dnf upgrade -y
+
     # Development libraries: ##########################
     dnf install -y almalinux-release-devel
     dnf install -y 'dnf-command(config-manager)'
     dnf config-manager --set-enabled crb
     
-    # Standard packages: ##############################
+    # "Standard" packages: ############################
     dnf install -y \
         gcc \
         gcc-gfortran \
         cmake \
         maven \
         git \
-        java-17-openjdk \
+        java-21-openjdk \
         environment-modules \
         tzdata \
         vim-enhanced
@@ -44,7 +52,18 @@ From: almalinux/9-base
 
     # Scientific python modules: ######################
     dnf install -y python3-pip
+    #dnf install -y python3-scipy
     pip3 install --prefix /opt pandas numpy matplotlib
+
+    dnf install -y python3.11 \
+        python3.11-pip \
+        python3.11-urllib3 \
+        python3.11-ply \
+        python3.11-requests \
+        python3.11-PyMySQL \
+        python3.11-tkinter \
+        python3.11-scipy
+    pip3.11 install --prefix /opt pandas numpy matplotlib
 
 %environment
     PS1='alma9> '

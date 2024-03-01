@@ -10,6 +10,7 @@ From: rootproject/root:6.30.02-alma9
     /home/baltzell/ccdb/bin/ccdb /opt/bin/
     /home/baltzell/c12ut-python3/bin/ccdb-ranges.py /opt/bin
     /home/baltzell/c12ut-python3/bin/ccdb-diff.py /opt/bin
+    /home/baltzell/c12ut-python3/bin/ccdb-plot.py /opt/bin
     /home/baltzell/c12ut-python3/bin/rcdb-spreadsheet.py /opt/bin
     /home/baltzell/c12ut-python3/mya/fcup-calib.py /opt/bin
 
@@ -43,7 +44,8 @@ From: rootproject/root:6.30.02-alma9
     # RCDB dependencies: ##############################
     dnf install -y python3-sqlalchemy
     dnf install -y python3-PyMySQL
-    
+    dnf install -y python3-click
+
     # Standard python modules: ########################
     dnf install -y python3-requests
     dnf install -y python3-pytz

@@ -33,7 +33,9 @@ From: almalinux/9-base
         libSM \
         glibc \
         gcc-c++ \
-        libGLU
+        libGLU \
+        patch \
+        mesa-libGLw
 
     # RCDB dependencies: ##############################
     dnf install -y python3-sqlalchemy

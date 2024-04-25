@@ -23,6 +23,7 @@ From: almalinux/9-base
         cmake \
         maven \
         git \
+        wget \
         java-21-openjdk \
         environment-modules \
         tzdata \

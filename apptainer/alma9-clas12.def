@@ -1,0 +1,24 @@
+Bootstrap: localimage
+From: ./alma9-base.sif
+
+%files
+    /home/baltzell/rcdb/python /opt/rcdb
+    /home/baltzell/ccdb/python /opt/ccdb
+    /home/baltzell/ccdb/bin/ccdb /opt/bin/
+    /home/baltzell/c12ut-python3/bin/ccdb-ranges.py /opt/bin
+    /home/baltzell/c12ut-python3/bin/ccdb-diff.py /opt/bin
+    /home/baltzell/c12ut-python3/bin/ccdb-plot.py /opt/bin
+    /home/baltzell/c12ut-python3/bin/rcdb-spreadsheet.py /opt/bin
+    /home/baltzell/c12ut-python3/mya/fcup-calib.py /opt/bin
+
+%environment
+    PS1='alma9> '
+    PATH=${PATH}:/opt/bin
+    PYTHONPATH=${PYTHONPATH}:/opt/lib64/python3.9/site-packages
+    PYTHONPATH=${PYTHONPATH}:/opt/lib/python3.9/site-packages
+    PYTHONPATH=${PYTHONPATH}:/opt/rcdb:/opt/ccdb
+    CCDB_CONNECTION=mysql://clas12reader@clasdb.jlab.org/clas12
+    RCDB_CONNECTION=mysql://rcdb@clasdb.jlab.org/rcdb
+    RCDB_HOME=/opt/rcdb
+    export PS1 PATH PYTHONPATH CCDB_CONNECTION RCDB_CONNECTION RCDB_HOME
+

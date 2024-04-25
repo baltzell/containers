@@ -1,0 +1,49 @@
+Bootstrap: docker
+From: almalinux/9-base
+
+%post
+    # JLab certificate: ###############################
+    # (necessary only when building a container at JLab)
+    cd /usr/share/pki/ca-trust-source/anchors \
+        && curl -sLO https://pki.jlab.org/JLabCA.crt \
+        && update-ca-trust
+
+    dnf update -y
+    dnf upgrade -y
+
+    # Development libraries: ##########################
+    dnf install -y almalinux-release-devel
+    dnf install -y 'dnf-command(config-manager)'
+    dnf config-manager --set-enabled crb
+    
+    # "Standard" packages: ############################
+    dnf install -y \
+        gcc \
+        gcc-gfortran \
+        cmake \
+        maven \
+        git \
+        java-21-openjdk \
+        environment-modules \
+        tzdata \
+        vim-enhanced \
+        mariadb-devel \
+        libXpm \
+        libSM \
+        glibc \
+        gcc-c++
+
+    # RCDB dependencies: ##############################
+    dnf install -y python3-sqlalchemy
+    dnf install -y python3-PyMySQL
+
+    # Standard python modules: ########################
+    dnf install -y python3-requests
+    dnf install -y python3-pytz
+    dnf install -y python3-dateutil
+    dnf install -y python3-tkinter
+
+    # Scientific python modules: ######################
+    dnf install -y python3-pip
+    pip3 install --prefix /opt pandas numpy matplotlib
+

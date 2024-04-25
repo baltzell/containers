@@ -31,7 +31,8 @@ From: almalinux/9-base
         libXpm \
         libSM \
         glibc \
-        gcc-c++
+        gcc-c++ \
+        libGLU
 
     # RCDB dependencies: ##############################
     dnf install -y python3-sqlalchemy

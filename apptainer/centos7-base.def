@@ -1,6 +1,9 @@
 Bootstrap: docker
 From: centos:7
 
+%files
+    /work/clas12/users/baltzell/centos77-cleaned /opt/clas/centos77
+
 %post
     # JLab certificate: ###############################
     # (necessary only when building a container at JLab)

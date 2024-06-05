@@ -1,0 +1,35 @@
+Bootstrap: docker
+From: centos:7
+
+%post
+    # JLab certificate: ###############################
+    # (necessary only when building a container at JLab)
+    cd /usr/share/pki/ca-trust-source/anchors \
+        && curl -sLO https://pki.jlab.org/JLabCA.crt \
+        && update-ca-trust
+
+    yum update -y
+    yum upgrade -y
+
+    # "Standard" packages: ############################
+    yum install -y \
+        gcc \
+        gcc-gfortran \
+        cmake \
+        maven \
+        git \
+        svn \
+        cvs \
+        wget \
+        which \
+        python3 \
+        libXpm \
+        libSM \
+        glibc \
+        gcc-c++ \
+        libGLU \
+        patch \
+        mariadb-devel \
+        mesa-libGLw \
+        vim-enhanced
+

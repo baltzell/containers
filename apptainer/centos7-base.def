@@ -2,10 +2,19 @@ Bootstrap: docker
 From: centos:7
 
 %files
-    /work/clas12/users/baltzell/centos77-cleaned /opt/clas/centos77
+#
+# stuff copied from various places at JLab to create the clas6
+# environment as it was for centos77, in particular:
+#
+# /group/clas/builds/centos77
+# /apps/python, which includes scons
+# /apps/root/5-something
+#
+    /scratch/baltzell/centos77 /opt
 
 %post
-    # JLab certificate: ###############################
+
+    # JLab certificate:
     # (necessary only when building a container at JLab)
     cd /usr/share/pki/ca-trust-source/anchors \
         && curl -sLO https://pki.jlab.org/JLabCA.crt \
@@ -13,26 +22,36 @@ From: centos:7
 
     yum update -y
     yum upgrade -y
+    yum install -y epel-release 
+    yum install -y xbae-devel
 
-    # "Standard" packages: ############################
+    # standard utilities:
     yum install -y \
         gcc \
         gcc-gfortran \
-        cmake \
-        maven \
+        scons \
         git \
         svn \
         cvs \
         wget \
         which \
         python3 \
-        libXpm \
-        libSM \
         glibc \
         gcc-c++ \
-        libGLU \
         patch \
+        environment-modules \
         mariadb-devel \
+
+
+    # clas6 stuff (?)
+    yum install -y \
+        libXmu \
+        libXpm \
+        libSM \
+        libGLU \
         mesa-libGLw \
-        vim-enhanced
+        motif-devel \
+        tcl-devel \
+        tk-devel \
+        libXaw-devel \
 

@@ -1,0 +1,52 @@
+Bootstrap: docker
+From: fedora:40
+
+#%files
+#    /scratch/baltzell/centos77 /opt
+
+%post
+    # JLab certificate: ###############################
+    # (necessary only when building a container at JLab)
+    cd /usr/share/pki/ca-trust-source/anchors \
+        && curl -sLO https://pki.jlab.org/JLabCA.crt \
+        && update-ca-trust
+
+    yum update -y
+    yum upgrade -y
+
+    # "standard" stuff:
+    yum install -y \
+        gcc \
+        glibc \
+        gcc-c++ \
+        gcc-gfortran \
+        java-21-openjdk \
+        python3 \
+        python3-pip \
+        patch \
+        scons \
+        cmake \
+        maven \
+        git \
+        svn \
+        cvs \
+        wget \
+        which \
+        tzdata \
+        mariadb-devel \
+        vim-enhanced \
+        environment-modules \
+
+    yum install -y \
+        libXmu \
+        libXpm \
+        libSM \
+        libGLU \
+        mesa-libGLw \
+        motif-devel \
+        tcl-devel \
+        tk-devel \
+        xbae-devel \
+        libXaw-devel \
+        xbae-devel \
+        

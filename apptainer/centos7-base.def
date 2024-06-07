@@ -10,7 +10,11 @@ From: centos:7
 # /apps/python, which includes scons
 # /apps/root/5-something
 #
-    /scratch/baltzell/centos77 /opt
+    /scratch/baltzell/centos79/environment.sh /opt
+    /scratch/baltzell/centos79/clas /opt
+    /scratch/baltzell/centos79/cernlib /opt
+    /scratch/baltzell/centos79/python /opt
+    /scratch/baltzell/centos79/root /opt
 
 %post
 

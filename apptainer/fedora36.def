@@ -2,6 +2,59 @@ Bootstrap: docker
 From: fedora:36
 
 %post
-#  echo "Running custom stuff"
-#  yum -y install gcc-c++
+    # JLab certificate: ###############################
+    # (necessary only when building a container at JLab)
+    cd /usr/share/pki/ca-trust-source/anchors \
+        && curl -sLO https://pki.jlab.org/JLabCA.crt \
+        && update-ca-trust
+
+    yum update -y
+    yum upgrade -y
+
+    # "standard" stuff:
+    yum install -y \
+        gcc \
+        glibc \
+        gcc-c++ \
+        gcc-gfortran \
+        java-17-openjdk \
+        python3 \
+        python3-pip \
+        patch \
+        scons \
+        cmake \
+        maven \
+        git \
+        svn \
+        cvs \
+        wget \
+        which \
+        rsync \
+        tzdata \
+        mariadb-devel \
+        vim-enhanced \
+        environment-modules \
+
+    yum install -y \
+        gsl \
+        libXmu \
+        libXpm \
+        libSM \
+        libGLU \
+        mesa-libGLw \
+        motif-devel \
+        tcl-devel \
+        tk-devel \
+        xbae-devel \
+        libXaw-devel \
+        xbae-devel \
+      	mesa-libGLU-devel \
+        libX11-devel \
+        libXpm-devel \
+        libXft-devel \
+        libXt-devel \
+        libXmu-devel \
+        libXrender-devel \
+        xorg-x11-server-Xvfb \
+        xrandr \
 

@@ -45,6 +45,7 @@ From: centos:7
         patch \
         environment-modules \
         mariadb-devel \
+        sqlitebrowser \
 
 
     # clas6 stuff (?)

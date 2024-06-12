@@ -1,0 +1,6 @@
+Bootstrap: docker
+From: jeffersonlab/base:cvmfs-fedora36
+
+%post
+    yum install -y rsync patch
+

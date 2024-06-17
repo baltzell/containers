@@ -58,3 +58,10 @@ From: fedora:36
         xorg-x11-server-Xvfb \
         xrandr \
 
+    curl -sLO https://github.com/cea-hpc/modules/releases/download/v5.4.0/modules-5.4.0.tar.gz
+    tar -xzvf modules-5.4.0.tar.gz
+    cd modules-5.4.0
+    ./configure --prefix /opt
+    make
+    make install
+

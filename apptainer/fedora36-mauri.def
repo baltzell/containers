@@ -4,3 +4,6 @@ From: jeffersonlab/base:cvmfs-fedora36
 %post
     yum install -y rsync patch
 
+    # incompatible with HIPO build system:
+    #yum install -y lz4
+
